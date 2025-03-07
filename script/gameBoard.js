@@ -1,3 +1,5 @@
+import { cell } from "./cell.js";
+
 export const gameBoard = (function () {
   const row = 3;
   const col = 3;
@@ -8,7 +10,7 @@ export const gameBoard = (function () {
     for (let i = 0; i < row; i++) {
       gameBoard[i] = [];
       for (let j = 0; j < col; j++) {
-        gameBoard[i][j] = "";
+        gameBoard[i].push(cell);
       }
     }
   };
