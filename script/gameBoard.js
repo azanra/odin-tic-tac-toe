@@ -21,13 +21,13 @@ export const gameBoard = (function () {
 
   const decrementEmptyCell = () => emptyCell--;
 
-  const placeMark = (mark, inputRow, inputCol) => {
-    for (let i = 0; i < row; i++) {
-      for (let j = 0; j < col; j++) {
-        if (i === inputRow && j === inputCol) {
-          gameBoard[i][j] = mark;
-          decrementEmptyCell();
-          console.log(returnEmptyCell());
+  const placeMark = (mark, inputRow, inputColumn) => {
+    for (let currentRow = 0; currentRow < row; currentRow++) {
+      if (currentRow === inputRow) {
+        for (let currentColumn = 0; currentColumn < col; currentColumn++) {
+          if (currentColumn === inputColumn) {
+            gameBoard[currentRow][currentColumn].setValue(mark);
+          }
         }
       }
     }
