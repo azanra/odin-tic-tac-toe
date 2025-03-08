@@ -10,7 +10,14 @@ export const player = (function () {
     },
   ];
 
-  const returnPlayer = () => player;
+  const activePlayer = player[0];
 
-  return { returnPlayer };
+  const returnActivePlayer = () => activePlayer;
+
+  const switchTurn = () => {
+    activePlayer === player[0]
+      ? (activePlayer = player[1])
+      : (activePlayer = player[0]);
+  };
+  return { switchTurn, returnActivePlayer };
 })();
