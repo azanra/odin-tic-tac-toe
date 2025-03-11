@@ -1,16 +1,21 @@
 import { cell } from "./cell.js";
+import { gameFlow } from "./gameFlow.js";
 
 export const gameBoard = (function () {
   const row = 3;
   const col = 3;
+
   let gameBoard = [];
+
   let emptyCell = 9;
+
+  let markCheck = [];
 
   const createGameBoard = () => {
     for (let i = 0; i < row; i++) {
       gameBoard[i] = [];
       for (let j = 0; j < col; j++) {
-        gameBoard[i].push(cell);
+        gameBoard[i][j] = "";
       }
     }
   };
@@ -26,7 +31,7 @@ export const gameBoard = (function () {
       if (currentRow === inputRow) {
         for (let currentColumn = 0; currentColumn < col; currentColumn++) {
           if (currentColumn === inputColumn) {
-            gameBoard[currentRow][currentColumn].setValue(mark);
+            gameBoard[currentRow][currentColumn] = mark;
           }
         }
       }
