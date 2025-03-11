@@ -9,6 +9,7 @@ export const gameBoard = (function () {
 
   let emptyCell = 9;
 
+  //array to check the mark
   let markCheck = [];
 
   const createGameBoard = () => {
@@ -34,6 +35,19 @@ export const gameBoard = (function () {
             gameBoard[currentRow][currentColumn] = mark;
           }
         }
+      }
+    }
+  };
+
+  //if every item in the array match the first item
+  const ifMatch = (item) => item === markCheck[0][0];
+
+  const checkMark = () => {
+    //first item is not empty string
+    if (markCheck[0][0] === "X" || markCheck[0][0] === "O") {
+      if (markCheck[0].every(ifMatch) === true) {
+        gameFlow.updateWinStatus();
+        console.log(gameFlow.returnWinStatus());
       }
     }
   };
