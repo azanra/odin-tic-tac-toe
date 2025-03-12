@@ -1,4 +1,3 @@
-import { cell } from "./cell.js";
 import { gameFlow } from "./gameFlow.js";
 
 export const gameBoard = (function () {
@@ -51,6 +50,27 @@ export const gameBoard = (function () {
       }
     }
   };
+
+  const horizontalCheck = () => {
+    for (let i = 0; i < row; i++) {
+      if (markCheck.length < 1) {
+        markCheck.push(gameBoard[i]);
+      } else {
+        checkMark();
+        markCheck = [];
+        i--;
+      }
+    }
+  };
+
+  createGameBoard();
+  console.log(returnGameBoard());
+  placeMark("X", 0, 0);
+  placeMark("X", 0, 1);
+  placeMark("X", 0, 2);
+  placeMark("O", 1, 1);
+  placeMark("X", 2, 2);
+  horizontalCheck();
 
   return {
     createGameBoard,
