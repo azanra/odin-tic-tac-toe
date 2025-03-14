@@ -32,19 +32,22 @@ export const gameBoard = (function () {
         for (let currentColumn = 0; currentColumn < col; currentColumn++) {
           if (currentColumn === inputColumn) {
             gameBoard[currentRow][currentColumn] = mark;
+            decrementEmptyCell();
           }
         }
       }
     }
   };
 
-  //if every item in the array match the first item
-  const ifMatch = (item) => item === markCheck[0][0];
+  const allFirstPlayerMark = (item) => item === "X";
+  const allSecondPlayerMark = (item) => item === "O";
 
-  const checkMark = () => {
-    //first item is not empty string
-    if (markCheck[0][0] === "X" || markCheck[0][0] === "O") {
-      if (markCheck[0].every(ifMatch) === true) {
+  const checkMark = (checkArr) => {
+    if (checkArr[0] === "X" || checkArr[0] === "O") {
+      if (
+        checkArr.every(allFirstPlayerMark) === true ||
+        checkArr.every(allSecondPlayerMark) === true
+      ) {
         gameFlow.updateWinStatus();
         console.log(gameFlow.returnWinStatus());
       }
@@ -52,25 +55,10 @@ export const gameBoard = (function () {
   };
 
   const horizontalCheck = () => {
-    for (let i = 0; i < row; i++) {
-      if (markCheck.length < 1) {
-        markCheck.push(gameBoard[i]);
-      } else {
-        checkMark();
-        markCheck = [];
-        i--;
-      }
-    }
+    gameBoard.map((row) => {
+      checkMark(row);
+    });
   };
-
-  createGameBoard();
-  console.log(returnGameBoard());
-  placeMark("X", 0, 0);
-  placeMark("X", 0, 1);
-  placeMark("X", 0, 2);
-  placeMark("O", 1, 1);
-  placeMark("X", 2, 2);
-  horizontalCheck();
 
   return {
     createGameBoard,
@@ -78,5 +66,6 @@ export const gameBoard = (function () {
     returnEmptyCell,
     decrementEmptyCell,
     placeMark,
+    horizontalCheck,
   };
 })();
