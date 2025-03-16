@@ -60,6 +60,20 @@ export const gameBoard = (function () {
     });
   };
 
+  const verticalCheck = () => {
+    let firstCol = [];
+    let secondCol = [];
+    let thirdCol = [];
+    gameBoard.map((row) => {
+      firstCol.push(row[0]);
+      secondCol.push(row[1]);
+      thirdCol.push(row[2]);
+    });
+    checkMark(firstCol);
+    checkMark(secondCol);
+    checkMark(thirdCol);
+  };
+
   return {
     createGameBoard,
     returnGameBoard,
@@ -67,5 +81,6 @@ export const gameBoard = (function () {
     decrementEmptyCell,
     placeMark,
     horizontalCheck,
+    verticalCheck,
   };
 })();
