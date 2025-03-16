@@ -84,14 +84,18 @@ export const gameBoard = (function () {
     checkMark(secondDia);
   };
 
+  const check = () => {
+    horizontalCheck();
+    verticalCheck();
+    diagonalCheck();
+  };
+
   return {
     createGameBoard,
     returnGameBoard,
     returnEmptyCell,
     decrementEmptyCell,
     placeMark,
-    horizontalCheck,
-    verticalCheck,
-    diagonalCheck,
+    check,
   };
 })();
