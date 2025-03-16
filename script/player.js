@@ -10,7 +10,7 @@ export const player = (function () {
     },
   ];
 
-  const activePlayer = player[0];
+  let activePlayer = player[0];
 
   const returnActivePlayer = () => activePlayer;
 
