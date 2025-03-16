@@ -72,6 +72,21 @@ export const gameBoard = (function () {
     checkMark(thirdCol);
   };
 
+  const diagonalCheck = () => {
+    let firstDia = [];
+    let secondDia = [];
+    let firstCounter = 0;
+    let secondCounter = 2;
+    gameBoard.map((row) => {
+      firstDia.push(row[firstCounter]);
+      firstCounter++;
+      secondDia.push(row[secondCounter]);
+      secondCounter--;
+    });
+    checkMark(firstDia);
+    checkMark(secondDia);
+  };
+
   return {
     createGameBoard,
     returnGameBoard,
@@ -80,5 +95,6 @@ export const gameBoard = (function () {
     placeMark,
     horizontalCheck,
     verticalCheck,
+    diagonalCheck,
   };
 })();
