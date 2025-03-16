@@ -8,9 +8,6 @@ export const gameBoard = (function () {
 
   let emptyCell = 9;
 
-  //array to check the mark
-  let markCheck = [];
-
   const createGameBoard = () => {
     for (let i = 0; i < row; i++) {
       gameBoard[i] = [];
