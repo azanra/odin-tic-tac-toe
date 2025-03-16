@@ -43,14 +43,12 @@ export const gameBoard = (function () {
   const allSecondPlayerMark = (item) => item === "O";
 
   const checkMark = (checkArr) => {
-    if (checkArr[0] === "X" || checkArr[0] === "O") {
-      if (
-        checkArr.every(allFirstPlayerMark) === true ||
-        checkArr.every(allSecondPlayerMark) === true
-      ) {
-        gameFlow.updateWinStatus();
-        console.log(gameFlow.returnWinStatus());
-      }
+    if (
+      checkArr.every(allFirstPlayerMark) === true ||
+      checkArr.every(allSecondPlayerMark) === true
+    ) {
+      gameFlow.updateWinStatus();
+      console.log(gameFlow.returnWinStatus());
     }
   };
 
