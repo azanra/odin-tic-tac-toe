@@ -23,5 +23,13 @@ export const view = (function () {
     return arrayBoard;
   };
 
-  return { createColumn, storeGameBoard };
+  const displayDom = () => {
+    const gameBoard = storeGameBoard();
+    for (let i = 0; i < 9; i++) {
+      const currentCell = document.querySelector(`.cell-${i}`);
+      currentCell.textContent = gameBoard[i];
+    }
+  };
+
+  return { createColumn, displayDom };
 })();
