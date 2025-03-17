@@ -1,4 +1,5 @@
 import { gameFlow } from "./gameFlow.js";
+import { view } from "./view.js";
 
 export const gameBoard = (function () {
   const row = 3;
@@ -8,6 +9,8 @@ export const gameBoard = (function () {
 
   let emptyCell = 9;
 
+  const cellAmount = 9;
+
   const createGameBoard = () => {
     for (let i = 0; i < row; i++) {
       gameBoard[i] = [];
@@ -16,6 +19,8 @@ export const gameBoard = (function () {
       }
     }
   };
+
+  const returnCellAmount = () => cellAmount;
 
   const returnGameBoard = () => gameBoard;
 
@@ -34,6 +39,18 @@ export const gameBoard = (function () {
         }
       }
     }
+  };
+
+  const placeDomMark = () => {
+    let domArray = view.returnDomBoard();
+    let counter = 0;
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col; j++) {
+        gameBoard[i][j] = domArray[counter];
+        counter++;
+      }
+    }
+    console.log(returnGameBoard());
   };
 
   const allFirstPlayerMark = (item) => item === "X";
@@ -97,5 +114,7 @@ export const gameBoard = (function () {
     decrementEmptyCell,
     placeMark,
     check,
+    returnCellAmount,
+    placeDomMark,
   };
 })();

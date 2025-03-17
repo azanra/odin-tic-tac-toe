@@ -2,9 +2,12 @@ import { gameBoard } from "./gameBoard.js";
 import { player } from "./player.js";
 
 export const view = (function () {
-  const cellAmount = gameBoard.returnCellAmount();
+  let domBoard = [];
+
+  const returnDomBoard = () => domBoard;
 
   const createColumn = () => {
+    const cellAmount = gameBoard.returnCellAmount();
     const gameBoardContainer = document.querySelector(".gameBoard");
     for (let i = 0; i < cellAmount; i++) {
       const cell = document.createElement("div");
@@ -47,6 +50,9 @@ export const view = (function () {
       player.switchTurn();
       const cellNumber = getCellNumber(cell);
       console.log(cellNumber);
+      domBoard[cellNumber] = cell.textContent;
+      console.log(domBoard);
+      gameBoard.placeDomMark();
     }
   };
 
@@ -58,5 +64,5 @@ export const view = (function () {
     return splitFirst[1];
   };
 
-  return { createColumn, displayDom, domListener };
+  return { createColumn, displayDom, domListener, returnDomBoard };
 })();
