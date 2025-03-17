@@ -1,4 +1,5 @@
 import { gameBoard } from "./gameBoard.js";
+import { player } from "./player.js";
 
 export const view = (function () {
   const cellAmount = gameBoard.returnCellAmount();
@@ -7,7 +8,7 @@ export const view = (function () {
     const gameBoardContainer = document.querySelector(".gameBoard");
     for (let i = 0; i < cellAmount; i++) {
       const cell = document.createElement("div");
-      cell.setAttribute("class", `cell-${i}`);
+      cell.setAttribute("class", `cell-${i} cells`);
       gameBoardContainer.append(cell);
     }
   };
@@ -31,5 +32,21 @@ export const view = (function () {
     }
   };
 
-  return { createColumn, displayDom };
+  const domListener = () => {
+    const cells = document.querySelectorAll(".cells");
+    cells.forEach((cell) => {
+      cell.addEventListener("click", () => {
+        domEvent(cell);
+      });
+    });
+  };
+
+  const domEvent = (cell) => {
+    if (cell.textContent === "") {
+      cell.textContent = player.returnActivePlayer().playerMark;
+      player.switchTurn();
+    }
+  };
+
+  return { createColumn, displayDom, domListener };
 })();
