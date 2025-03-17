@@ -45,7 +45,17 @@ export const view = (function () {
     if (cell.textContent === "") {
       cell.textContent = player.returnActivePlayer().playerMark;
       player.switchTurn();
+      const cellNumber = getCellNumber(cell);
+      console.log(cellNumber);
     }
+  };
+
+  const getCellNumber = (cell) => {
+    const currentClass = cell.className;
+    const splitClass = currentClass.split(" ");
+    const firstClass = splitClass[0];
+    const splitFirst = firstClass.split("-");
+    return splitFirst[1];
   };
 
   return { createColumn, displayDom, domListener };
