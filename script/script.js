@@ -1,3 +1,4 @@
-import { gameFlow } from "./gameFlow.js";
+import { view } from "./view.js";
 
-gameFlow.playRound();
+view.submitListener();
+view.startListener();

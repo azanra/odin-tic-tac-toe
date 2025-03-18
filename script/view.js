@@ -1,4 +1,5 @@
 import { gameBoard } from "./gameBoard.js";
+import { gameFlow } from "./gameFlow.js";
 import { player } from "./player.js";
 
 export const view = (function () {
@@ -90,6 +91,15 @@ export const view = (function () {
     }
   };
 
+  const startListener = () => {
+    const startBtn = document.querySelector("#startBtn");
+    startBtn.addEventListener("click", () => {
+      gameFlow.playRound();
+      startBtn.disabled = true;
+      startBtn.style.opacity = "0";
+    });
+  };
+
   return {
     createColumn,
     displayDom,
@@ -98,5 +108,6 @@ export const view = (function () {
     returnCheckPlayer,
     resetDomBoard,
     submitListener,
+    startListener,
   };
 })();
