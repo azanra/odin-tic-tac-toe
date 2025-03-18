@@ -4,7 +4,13 @@ import { player } from "./player.js";
 export const view = (function () {
   let domBoard = [];
 
+  let checkPlayerStatus;
+
+  const resetDomBoard = () => (domBoard = []);
+
   const returnDomBoard = () => domBoard;
+
+  const returnCheckPlayer = () => checkPlayerStatus;
 
   const createColumn = () => {
     const cellAmount = gameBoard.returnCellAmount();
@@ -47,6 +53,7 @@ export const view = (function () {
   const domEvent = (cell) => {
     if (cell.textContent === "") {
       cell.textContent = player.returnActivePlayer().playerMark;
+      checkPlayerStatus = player.returnActivePlayer().playerName;
       player.switchTurn();
       const cellNumber = getCellNumber(cell);
       console.log(cellNumber);
@@ -64,5 +71,12 @@ export const view = (function () {
     return splitFirst[1];
   };
 
-  return { createColumn, displayDom, domListener, returnDomBoard };
+  return {
+    createColumn,
+    displayDom,
+    domListener,
+    returnDomBoard,
+    returnCheckPlayer,
+    resetDomBoard,
+  };
 })();
