@@ -16,10 +16,24 @@ export const player = (function () {
 
   const resetActivePlayer = () => (activePlayer = player[0]);
 
+  const setFirstPlayerName = (nameInput) => (player[0].playerName = nameInput);
+
+  const setSecondPlayerName = (nameInput) => (player[1].playerName = nameInput);
+
   const switchTurn = () => {
     activePlayer === player[0]
       ? (activePlayer = player[1])
       : (activePlayer = player[0]);
   };
-  return { switchTurn, returnActivePlayer, resetActivePlayer };
+
+  const returnPlayer = () => player;
+
+  return {
+    switchTurn,
+    returnActivePlayer,
+    resetActivePlayer,
+    setFirstPlayerName,
+    setSecondPlayerName,
+    returnPlayer,
+  };
 })();
