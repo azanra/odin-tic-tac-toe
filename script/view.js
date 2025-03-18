@@ -71,6 +71,25 @@ export const view = (function () {
     return splitFirst[1];
   };
 
+  const submitListener = () => {
+    const firstPlayerInput = document.querySelector("#firstPlayerInput");
+    const secondPlayerInput = document.querySelector("#secondPlayerInput");
+    const submitBtn = document.querySelector("#submitBtn");
+    submitBtn.addEventListener("click", () => {
+      submitEvent(firstPlayerInput, secondPlayerInput);
+    });
+  };
+
+  const submitEvent = (firstPlayer, secondPlayer) => {
+    if (firstPlayer.value !== "" && secondPlayer.value !== "") {
+      player.setFirstPlayerName(firstPlayer.value);
+      player.setSecondPlayerName(secondPlayer.value);
+      console.log(player.returnPlayer());
+    } else {
+      alert("Both field need to be filled");
+    }
+  };
+
   return {
     createColumn,
     displayDom,
@@ -78,5 +97,6 @@ export const view = (function () {
     returnDomBoard,
     returnCheckPlayer,
     resetDomBoard,
+    submitListener,
   };
 })();
