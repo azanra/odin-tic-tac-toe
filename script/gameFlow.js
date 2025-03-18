@@ -22,6 +22,7 @@ export const gameFlow = (function () {
     if (winStatus === true) {
       const paraStatus = document.querySelector(".winStatus");
       paraStatus.textContent = `${view.returnCheckPlayer()} is winning the game`;
+      view.resetText(paraStatus);
       reset();
     }
   };

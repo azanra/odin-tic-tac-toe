@@ -107,6 +107,12 @@ export const view = (function () {
     });
   };
 
+  const resetText = (element) => {
+    setTimeout(() => {
+      element.textContent = "";
+    }, 3000);
+  };
+
   return {
     createColumn,
     displayDom,
@@ -117,5 +123,6 @@ export const view = (function () {
     submitListener,
     startListener,
     restartListener,
+    resetText,
   };
 })();
