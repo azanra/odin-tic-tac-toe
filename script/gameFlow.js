@@ -16,6 +16,7 @@ export const gameFlow = (function () {
     view.createColumn();
     view.domListener();
     view.displayDom();
+    view.updatePlayerTurnPara(player.returnActivePlayer().playerName);
   };
 
   const checkWin = () => {
@@ -34,6 +35,7 @@ export const gameFlow = (function () {
     resetWinStatus();
     gameBoard.createGameBoard();
     view.displayDom();
+    view.updatePlayerTurnPara(player.returnActivePlayer().playerName);
   };
 
   return { returnWinStatus, updateWinStatus, playRound, checkWin, reset };

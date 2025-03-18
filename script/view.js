@@ -56,12 +56,18 @@ export const view = (function () {
       cell.textContent = player.returnActivePlayer().playerMark;
       checkPlayerStatus = player.returnActivePlayer().playerName;
       player.switchTurn();
+      updatePlayerTurnPara(player.returnActivePlayer().playerName);
       const cellNumber = getCellNumber(cell);
       console.log(cellNumber);
       domBoard[cellNumber] = cell.textContent;
       console.log(domBoard);
       gameBoard.placeDomMark();
     }
+  };
+
+  const updatePlayerTurnPara = (currentPlayer) => {
+    const playerTurnPara = document.querySelector(".playerTurn");
+    playerTurnPara.textContent = `${currentPlayer} turn`;
   };
 
   const getCellNumber = (cell) => {
@@ -124,5 +130,6 @@ export const view = (function () {
     startListener,
     restartListener,
     resetText,
+    updatePlayerTurnPara,
   };
 })();
