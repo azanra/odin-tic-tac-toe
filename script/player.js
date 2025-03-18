@@ -14,10 +14,12 @@ export const player = (function () {
 
   const returnActivePlayer = () => activePlayer;
 
+  const resetActivePlayer = () => (activePlayer = player[0]);
+
   const switchTurn = () => {
     activePlayer === player[0]
       ? (activePlayer = player[1])
       : (activePlayer = player[0]);
   };
-  return { switchTurn, returnActivePlayer };
+  return { switchTurn, returnActivePlayer, resetActivePlayer };
 })();
