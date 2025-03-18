@@ -20,6 +20,8 @@ export const gameBoard = (function () {
     }
   };
 
+  const resetGameBoard = () => (gameBoard = []);
+
   const returnCellAmount = () => cellAmount;
 
   const returnGameBoard = () => gameBoard;
@@ -27,19 +29,6 @@ export const gameBoard = (function () {
   const returnEmptyCell = () => emptyCell;
 
   const decrementEmptyCell = () => emptyCell--;
-
-  const placeMark = (mark, inputRow, inputColumn) => {
-    for (let currentRow = 0; currentRow < row; currentRow++) {
-      if (currentRow === inputRow) {
-        for (let currentColumn = 0; currentColumn < col; currentColumn++) {
-          if (currentColumn === inputColumn) {
-            gameBoard[currentRow][currentColumn] = mark;
-            decrementEmptyCell();
-          }
-        }
-      }
-    }
-  };
 
   const placeDomMark = () => {
     let domArray = view.returnDomBoard();
@@ -51,6 +40,8 @@ export const gameBoard = (function () {
       }
     }
     console.log(returnGameBoard());
+    check();
+    gameFlow.checkWin();
   };
 
   const allFirstPlayerMark = (item) => item === "X";
@@ -112,9 +103,9 @@ export const gameBoard = (function () {
     returnGameBoard,
     returnEmptyCell,
     decrementEmptyCell,
-    placeMark,
     check,
     returnCellAmount,
     placeDomMark,
+    resetGameBoard,
   };
 })();
