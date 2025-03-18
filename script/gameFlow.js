@@ -35,5 +35,5 @@ export const gameFlow = (function () {
     view.displayDom();
   };
 
-  return { returnWinStatus, updateWinStatus, playRound, checkWin };
+  return { returnWinStatus, updateWinStatus, playRound, checkWin, reset };
 })();

@@ -100,6 +100,13 @@ export const view = (function () {
     });
   };
 
+  const restartListener = () => {
+    const restartBtn = document.querySelector("#restartBtn");
+    restartBtn.addEventListener("click", () => {
+      gameFlow.reset();
+    });
+  };
+
   return {
     createColumn,
     displayDom,
@@ -109,5 +116,6 @@ export const view = (function () {
     resetDomBoard,
     submitListener,
     startListener,
+    restartListener,
   };
 })();
