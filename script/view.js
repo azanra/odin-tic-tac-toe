@@ -98,9 +98,15 @@ export const view = (function () {
       player.setSecondPlayerName(secondPlayer.value);
       console.log(player.returnPlayer());
       updatePlayerTurnPara(player.returnActivePlayer().playerName);
+      setEmptyText(firstPlayer);
+      setEmptyText(secondPlayer);
     } else {
       alert("Both field need to be filled");
     }
+  };
+
+  const setEmptyText = (element) => {
+    element.value = "";
   };
 
   const startListener = () => {
