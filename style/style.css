@@ -30,6 +30,19 @@ button {
   padding: 15px 20px;
 }
 
+.firstPlayerContainer > label {
+  margin-right: 58px;
+}
+
+.secondPlayerContainer > label {
+  margin-right: 40px;
+}
+
+.playerInput > div,
+.submitContainer > div {
+  margin-bottom: 10px;
+}
+
 .gameBoard > div {
   border: 1px solid black;
   display: flex;
