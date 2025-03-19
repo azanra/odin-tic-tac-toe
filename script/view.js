@@ -92,6 +92,7 @@ export const view = (function () {
       player.setFirstPlayerName(firstPlayer.value);
       player.setSecondPlayerName(secondPlayer.value);
       console.log(player.returnPlayer());
+      updatePlayerTurnPara(player.returnActivePlayer().playerName);
     } else {
       alert("Both field need to be filled");
     }
