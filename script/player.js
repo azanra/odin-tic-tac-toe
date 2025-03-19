@@ -3,10 +3,12 @@ export const player = (function () {
     {
       playerName: "First Player",
       playerMark: "X",
+      color: "blue",
     },
     {
       playerName: "Second Player",
       playerMark: "O",
+      color: "red",
     },
   ];
 

@@ -55,6 +55,7 @@ export const view = (function () {
     if (cell.textContent === "") {
       cell.textContent = player.returnActivePlayer().playerMark;
       checkPlayerStatus = player.returnActivePlayer().playerName;
+      styleMark(cell);
       player.switchTurn();
       updatePlayerTurnPara(player.returnActivePlayer().playerName);
       const cellNumber = getCellNumber(cell);
@@ -63,6 +64,10 @@ export const view = (function () {
       console.log(domBoard);
       gameBoard.placeDomMark();
     }
+  };
+
+  const styleMark = (cell) => {
+    cell.style.color = player.returnActivePlayer().color;
   };
 
   const updatePlayerTurnPara = (currentPlayer) => {
