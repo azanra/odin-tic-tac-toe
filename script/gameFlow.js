@@ -11,6 +11,8 @@ export const gameFlow = (function () {
 
   const updateWinStatus = () => (winStatus = !winStatus);
 
+  const paraStatus = document.querySelector(".winStatus");
+
   const playRound = () => {
     gameBoard.createGameBoard();
     view.createColumn();
@@ -21,8 +23,15 @@ export const gameFlow = (function () {
 
   const checkWin = () => {
     if (winStatus === true) {
-      const paraStatus = document.querySelector(".winStatus");
       paraStatus.textContent = `${view.returnCheckPlayer()} is winning the game`;
+      view.resetText(paraStatus);
+      reset();
+    }
+  };
+
+  const checkTie = () => {
+    if (winStatus === false && gameBoard.returnEmptyCell() === 0) {
+      paraStatus.textContent = `The game result in a draw`;
       view.resetText(paraStatus);
       reset();
     }
@@ -33,10 +42,18 @@ export const gameFlow = (function () {
     view.resetDomBoard();
     player.resetActivePlayer();
     resetWinStatus();
+    gameBoard.resetEmptyCell();
     gameBoard.createGameBoard();
     view.displayDom();
     view.updatePlayerTurnPara(player.returnActivePlayer().playerName);
   };
 
-  return { returnWinStatus, updateWinStatus, playRound, checkWin, reset };
+  return {
+    returnWinStatus,
+    updateWinStatus,
+    playRound,
+    checkWin,
+    reset,
+    checkTie,
+  };
 })();

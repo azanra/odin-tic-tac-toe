@@ -20,6 +20,8 @@ export const gameBoard = (function () {
     }
   };
 
+  const resetEmptyCell = () => (emptyCell = 9);
+
   const resetGameBoard = () => (gameBoard = []);
 
   const returnCellAmount = () => cellAmount;
@@ -40,8 +42,10 @@ export const gameBoard = (function () {
       }
     }
     console.log(returnGameBoard());
+    decrementEmptyCell();
     check();
     gameFlow.checkWin();
+    gameFlow.checkTie();
   };
 
   const allFirstPlayerMark = (item) => item === "X";
@@ -107,5 +111,6 @@ export const gameBoard = (function () {
     returnCellAmount,
     placeDomMark,
     resetGameBoard,
+    resetEmptyCell,
   };
 })();
