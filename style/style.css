@@ -66,4 +66,10 @@ button {
   justify-content: center;
   align-items: center;
   padding: 25px;
+  border-radius: 5px;
+  height: 25px;
+}
+
+.gameBoard > div:hover {
+  background-color: hsl(0, 0%, 95%);
 }
